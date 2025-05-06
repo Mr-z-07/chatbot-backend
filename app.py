@@ -18,8 +18,23 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY environment variable is not set.")
 
-# Initialize FastAPI app
-app = FastAPI()
+# Initialize FastAPI app with title and description
+app = FastAPI(
+    title="Chatbot Backend API",
+    description="API for interacting with the chatbot"
+)
+
+# Root route for API documentation
+@app.get("/")
+async def root():
+    return {
+        "message": "Welcome to the Chatbot Backend API",
+        "documentation": "Visit /docs for API documentation",
+        "status": "running",
+        "endpoints": {
+            "chat": "/chat/"
+        }
+    }
 
 # Set up CORS middleware to allow all origins (for development purposes)
 app.add_middleware(
@@ -136,4 +151,5 @@ async def chat(input: User):
 # Main entry point to run the FastAPI app
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    port = int(os.environ.get("PORT", 10000))  # Use port 10000 as default
+    uvicorn.run(app, host="0.0.0.0", port=port)
