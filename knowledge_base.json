@@ -1,0 +1,38 @@
+{
+    "greetings": {
+        "keywords": ["hello", "hi", "hey", "greetings", "good morning", "good afternoon", "good evening", "howdy"],
+        "responses": ["Hello! How can I help you today?", "Hello there! What can I do for you?"]
+    },
+    "farewell": {
+        "keywords": ["bye", "goodbye", "see you", "later", "have a good", "talk to you", "catch you", "farewell"],
+        "responses": ["Goodbye! Have a great day!", "See you later!"]
+    },
+    "thanks": {
+        "keywords": ["thanks", "thank you", "appreciate", "grateful", "thx", "ty"],
+        "responses": ["You're welcome!", "Happy to help!"]
+    },
+    "help": {
+        "keywords": ["help", "assist", "support", "need help", "can you help", "how to", "how do I"],
+        "responses": ["I'm here to help! What do you need help with?"]
+    },
+    "about": {
+        "keywords": ["who are you", "what are you", "about you", "tell me about", "your purpose", "what do you do"],
+        "responses": ["I'm a simple AI chatbot that uses search trees to find the best answers!"]
+    },
+    "time": {
+        "keywords": ["time", "clock", "what time", "current time", "tell me the time", "time is it", "hour"],
+        "responses": ["I can't tell the exact time, but your device can!", "Try checking your device's clock."]
+    },
+    "date": {
+        "keywords": ["date", "what day", "today's date", "what is today", "current date", "which day", "what's the date"],
+        "responses": ["I'm not sure of the exact date, but you can check your calendar app!", "Ask your device or assistant about today's date."]
+    },
+    "fallback": {
+        "keywords": [],
+        "responses": [
+            "I'm not sure I understand. Can you say that again?",
+            "I don't have an answer for that yet.",
+            "I'm still learning. Can you try asking something else?"
+        ]
+    }
+}
