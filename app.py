@@ -33,7 +33,8 @@ async def root():
         "status": "running",
         "endpoints": {
             "chat": "/chat/"
-        }
+        },
+        "timestamp": datetime.now().isoformat()
     }
 
 # Set up CORS middleware to allow all origins (for development purposes)
@@ -105,6 +106,11 @@ def get_or_create_conversation(conversation_id: str) -> Conversation:
     if conversation_id not in conversations:
         conversations[conversation_id] = Conversation()
     return conversations[conversation_id]
+
+# Handle favicon requests
+@app.get("/favicon.ico")
+async def favicon():
+    return Response(status_code=204)
 
 # FastAPI endpoint for handling chat requests
 @app.post("/chat/")
