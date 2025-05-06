@@ -1,8 +1,9 @@
 import os
 import logging
 from typing import List, Dict
+from datetime import datetime
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from pydantic import BaseModel
 from groq import Groq
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,6 +26,15 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Add middleware for handling JSON responses
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Root route for API documentation
 @app.get("/")
 async def root():
@@ -37,6 +47,11 @@ async def root():
         },
         "timestamp": datetime.now().isoformat()
     }
+
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 # Health check endpoint
 @app.get("/health")
