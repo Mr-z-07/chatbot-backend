@@ -21,7 +21,8 @@ if not GROQ_API_KEY:
 # Initialize FastAPI app with title and description
 app = FastAPI(
     title="Chatbot Backend API",
-    description="API for interacting with the chatbot"
+    description="API for interacting with the chatbot",
+    version="1.0.0"
 )
 
 # Root route for API documentation
@@ -36,6 +37,11 @@ async def root():
         },
         "timestamp": datetime.now().isoformat()
     }
+
+# Health check endpoint
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 
 # Set up CORS middleware to allow all origins (for development purposes)
 app.add_middleware(
