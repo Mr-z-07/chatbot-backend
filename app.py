@@ -29,7 +29,7 @@ app = FastAPI(
 # Add middleware for handling JSON responses
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://mr-z-07.github.io/chatbot-frontend_1/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
